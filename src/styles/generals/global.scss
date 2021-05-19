@@ -1,0 +1,20 @@
+@import '~nprogress/nprogress.css';
+@import '../main.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  color: $text-color;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: $blue;
+}
+
+* {
+  box-sizing: border-box;
+}
