@@ -1,5 +1,5 @@
-import React from "react";
-import style from "./Header.module.scss";
+import React from 'react'
+import style from './Header.module.scss'
 
 export const Header = (): JSX.Element => (
   <div className="container">
@@ -10,4 +10,4 @@ export const Header = (): JSX.Element => (
       </ul>
     </div>
   </div>
-);
+)

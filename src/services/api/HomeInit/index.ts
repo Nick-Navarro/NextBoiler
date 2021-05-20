@@ -1,5 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from 'axios'
 
 // Example of dummy api
-export const fetchHomepageData = (): Promise<AxiosResponse> =>
-  axios.get(`/v1/home-data/`);
+export const fetchHomepageData = (): Promise<AxiosResponse> => axios.get(`/v1/home-data/`)

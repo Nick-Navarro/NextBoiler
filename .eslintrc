@@ -25,10 +25,6 @@
     "prettier"
   ],
   "rules": {
-    "semi": [
-      "error",
-      "never"
-    ],
     "object-curly-spacing": [
       "warn",
       "always"
@@ -104,6 +100,10 @@
           {
             "avoidEscape": true
           }
+        ],
+        "semi": [
+          "error",
+          "never"
         ]
       }
     }

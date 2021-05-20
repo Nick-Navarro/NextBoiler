@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios'
 
 // Config
-import { API_URL } from "@/../config/constants";
+import { API_URL } from '@/../config/constants'
 
-axios.defaults.baseURL = API_URL;
+axios.defaults.baseURL = API_URL
 
-export * from "./HomeInit";
+export * from './HomeInit'

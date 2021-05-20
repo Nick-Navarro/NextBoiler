@@ -1,16 +1,16 @@
-import React from "react";
-import moment from "moment";
+import React from 'react'
+import moment from 'moment'
 
-import { NextPage } from "next";
-import Head from "next/head";
+import { NextPage } from 'next'
+import Head from 'next/head'
 
-import { AppLayout } from "@/layouts/AppLayout";
-import { HomeInitials } from "@/@types/initializations";
+import { AppLayout } from '@/layouts/AppLayout'
+import { HomeInitials } from '@/@types/initializations'
 
-import { getHomePageInitialValues } from "@/services/initializations";
+import { getHomePageInitialValues } from '@/services/initializations'
 
-import { LOGGEDIN } from "@/../config/constants";
-import styles from "./home/home.module.scss";
+import { LOGGEDIN } from '@/../config/constants'
+import styles from './home/home.module.scss'
 
 const Home: NextPage<HomeInitials> = (): JSX.Element => (
   <div className={styles.container}>
@@ -27,20 +27,18 @@ const Home: NextPage<HomeInitials> = (): JSX.Element => (
           <a href="https://vitamedmd.net/" className={styles.card}>
             <h3>Documentation</h3>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              quia necessitatibus fugiat ratione odio nulla id nam.
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quia necessitatibus fugiat ratione odio
+              nulla id nam.
             </p>
           </a>
         </div>
       </main>
     </AppLayout>
 
-    <footer className={styles.footer}>
-      @{moment().format(`YYYY`)} TherapeuticsMS, Inc. All rights reserved.
-    </footer>
+    <footer className={styles.footer}>@{moment().format(`YYYY`)} TherapeuticsMS, Inc. All rights reserved.</footer>
   </div>
-);
+)
 
-Home.getInitialProps = async () => getHomePageInitialValues();
+Home.getInitialProps = async () => getHomePageInitialValues()
 
-export default Home;
+export default Home
