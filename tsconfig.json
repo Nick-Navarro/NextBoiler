@@ -27,7 +27,11 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@middleware/*": ["middleware/*"],
+      "@layouts/*": ["layouts/*"]
     }
   },
   "exclude": [
