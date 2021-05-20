@@ -77,7 +77,8 @@
           2, "backtick", {
             "avoidEscape": true
           }
-        ]
+        ],
+        "semi": ["error", "never"]
       }
     }
   ],
