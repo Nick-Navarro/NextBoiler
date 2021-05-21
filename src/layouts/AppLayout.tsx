@@ -11,7 +11,6 @@ export const AppLayout: React.FC<{ authority: number; layoutClass?: string }> = 
     <RouteHandler authority={authority}>
       <div className={`main-wrapper ${layoutClass}`}>
         <Header />
-
         {children}
       </div>
     </RouteHandler>

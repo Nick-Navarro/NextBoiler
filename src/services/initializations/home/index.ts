@@ -11,6 +11,5 @@ export const getHomePageInitialValues = async (): Promise<HomeInitials> => {
       initData = res.data
     })
     .catch((_error) => console.debug(_error))
-
   return { user: initData }
 }
