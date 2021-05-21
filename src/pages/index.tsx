@@ -39,6 +39,6 @@ const Home: NextPage<HomeInitials> = (): JSX.Element => (
   </div>
 )
 
-Home.getInitialProps = async () => getHomePageInitialValues()
+export const getServerSideProps = async () => getHomePageInitialValues()
 
 export default Home

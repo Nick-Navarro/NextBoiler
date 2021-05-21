@@ -10,6 +10,6 @@ export const getHomePageInitialValues = async (): Promise<HomeInitials> => {
     .then((res) => {
       initData = res.data
     })
-    .catch((_error) => console.debug(_error))
+    .catch((_error) => _error)
   return { user: initData }
 }
