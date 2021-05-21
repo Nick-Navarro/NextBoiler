@@ -6,8 +6,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     "src/(.*)": "<rootDir>/src/$1",
-    "^@components(.*)$": "<rootDir>/components$1",
-    "^@pages(.*)$": "<rootDir>/pages$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
     '\\.(scss|sass|css)$': 'identity-obj-proxy'
   },
   moduleDirectories: ['node_modules', 'src']
