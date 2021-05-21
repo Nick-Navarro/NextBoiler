@@ -9,8 +9,8 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ authUser, children }) => {
   const router = useRouter()
   useEffect(() => {
     // If authentificate user exists then redirect to homepage
-    if (authUser && (router.route === `/auth/sign-in` || router.route === `/auth/sign-up`)) {
-      router.push(`/`)
+    if (authUser && (router.route === '/auth/sign-in' || router.route === '/auth/sign-up')) {
+      router.push('/')
     }
   }, [])
 

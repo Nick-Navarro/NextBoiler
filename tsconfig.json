@@ -20,18 +20,26 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "jsx": "preserve",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "noImplicitReturns": false,
     "noImplicitThis": false,
     "noImplicitAny": false,
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@middleware/*": ["middleware/*"],
-      "@layouts/*": ["layouts/*"]
+      "@components/*": [
+        "components/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@middleware/*": [
+        "middleware/*"
+      ],
+      "@layouts/*": [
+        "layouts/*"
+      ]
     }
   },
   "exclude": [
