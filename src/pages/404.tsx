@@ -7,7 +7,7 @@ const NotFoundPage: React.FC<any> = () => {
   return (
     <div>
       <h1>Page not found...</h1>
-      <button type="button" onClick={() => router.push(`/`)}>
+      <button type="button" onClick={() => router.push('/')}>
         Back to home
       </button>
     </div>

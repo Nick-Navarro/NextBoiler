@@ -16,14 +16,23 @@
     "SharedArrayBuffer": "readonly"
   },
   "plugins": [
-    "import", "jsx-a11y", "react", "react-hooks"
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks"
   ],
   "extends": [
-    "airbnb", "prettier"
+    "airbnb",
+    "prettier"
   ],
   "rules": {
     "object-curly-spacing": [
-      "warn", "always"
+      "warn",
+      "always"
+    ],
+    "array-element-newline": [
+      "error",
+      "never"
     ],
     "camelcase": "off",
     "import/prefer-default-export": "off",
@@ -34,7 +43,9 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "import/extensions": [
-      "error", "ignorePackages", {
+      "error",
+      "ignorePackages",
+      {
         "ts": "never",
         "tsx": "never",
         "js": "never",
@@ -43,12 +54,19 @@
     ],
     "quotes": "off",
     "jsx-a11y/anchor-is-valid": [
-      "error", {
-        "components": ["Link"],
-        "specialLink": [
-          "hrefLeft", "hrefRight"
+      "error",
+      {
+        "components": [
+          "Link"
         ],
-        "aspects": ["invalidHref", "preferButton"]
+        "specialLink": [
+          "hrefLeft",
+          "hrefRight"
+        ],
+        "aspects": [
+          "invalidHref",
+          "preferButton"
+        ]
       }
     ]
   },
@@ -56,29 +74,48 @@
     {
       "files": "**/*.+(ts|tsx)",
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "plugins": [
+        "@typescript-eslint/eslint-plugin"
+      ],
       "extends": [
-        "plugin:@typescript-eslint/recommended", "prettier"
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
       ],
       "rules": {
         "import/no-extraneous-dependencies": [
-          "error", {
+          "error",
+          {
             "devDependencies": true
+          }
+        ],
+        "array-element-newline": [
+          "error",
+          {
+            "multiline": true
           }
         ],
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-empty-interface": "off",
-        "no-use-before-define": [0],
-        "@typescript-eslint/no-use-before-define": [1],
+        "no-use-before-define": [
+          0
+        ],
+        "@typescript-eslint/no-use-before-define": [
+          1
+        ],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/quotes": [
-          2, "backtick", {
+          2,
+          "single",
+          {
             "avoidEscape": true
           }
         ],
-        "semi": ["error", "never"]
+        "semi": [
+          "error",
+          "never"
+        ]
       }
     }
   ],

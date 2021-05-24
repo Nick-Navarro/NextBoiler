@@ -5,7 +5,7 @@ import { RouteHandler } from '@/middleware/RouteHandler'
 import { Header } from '@/components/global/Header'
 
 export const AppLayout: React.FC<{ authority: number; layoutClass?: string }> = (props) => {
-  const { children, authority, layoutClass = `` } = props
+  const { children, authority, layoutClass = '' } = props
 
   return (
     <RouteHandler authority={authority}>

@@ -7,9 +7,9 @@ import '@/styles/generals/global.scss'
 
 // Page Loader Config
 NProgress.configure({ showSpinner: false })
-Router.events.on(`routeChangeStart`, () => NProgress.start())
-Router.events.on(`routeChangeComplete`, () => NProgress.done())
-Router.events.on(`routeChangeError`, () => NProgress.done())
+Router.events.on('routeChangeStart', () => NProgress.start())
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 const AppBase = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />
 

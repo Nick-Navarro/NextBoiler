@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 import AuthLayout from '@/layouts/AuthLayout'
 
@@ -10,8 +11,13 @@ export declare interface FormDataType {
 
 const Login: React.FunctionComponent = () => (
   <AuthLayout>
-    <input type="text" placeholder="username or email ..." />
-    <input type="password" placeholder="password ..." />
+    <Link href="/">Home</Link>
+
+    <div>
+      <input type="text" placeholder="username or email ..." />
+      <input type="password" placeholder="password ..." />
+      <input type="submit" value="Submit" />
+    </div>
   </AuthLayout>
 )
 

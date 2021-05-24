@@ -1,0 +1,29 @@
+{
+  "files.associations": {
+    "*.jsx": "javascriptreact"
+  },
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  "javascript.format.enable": false,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "git.ignoreLimitWarning": true,
+  "eslint.workingDirectories": [
+    "./",
+  ],
+  "eslint.options": {
+    "rules": {
+      "array-element-newline": [
+        "error",
+        "never"
+      ],
+    }
+  }
+}
