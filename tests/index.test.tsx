@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Home, { getServerSideProps } from '@/pages/index'
 import { HomepageInitResponseData } from '@/@types/api'
+import { translationContext } from '../constants/test/translation'
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(() => ({
@@ -8,6 +9,14 @@ jest.mock('next/router', () => ({
     push: jest.fn(),
   }))
 }))
+
+jest.mock('react-i18next', () => {
+  const messages = require('../public/locales/en/common.json')
+  return {
+  useTranslation: () => ({
+    t: (key: string): string => messages[key]})
+  }
+})
 
 const responseUser: HomepageInitResponseData = {
   dataResponseType: 'homepage_init',
@@ -27,13 +36,18 @@ jest.mock('@/services/initializations', () => ({
 
 describe('Home', () => {
   it('renders without crashing', () => {
-    render(<Home />)
+    render(<Home homeData={responseUser} />)
     const h1 = screen.getByText('Starting Patient Portal')
     expect(h1).toBeDefined()
   })
 
-  it('describe getInitialProps', async () => {
-    const props = await getServerSideProps()
-    expect(props).toMatchObject({ data: responseUser.user })
+  it('describes getServerSideProps', async () => {
+    const props = await getServerSideProps({ locale: 'en' });
+    expect(props).toMatchObject({
+      props: {
+        // data: responseUser.user,
+        _nextI18Next: translationContext
+      }
+    });
   })
 })
