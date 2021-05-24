@@ -13,9 +13,9 @@ const responseUser: HomepageInitResponseData = {
   dataResponseType: 'homepage_init',
   user: {
     _id: '1',
-  fullName: 'Nick Navarro',
-  username: 'Test_Monkey',
-  email: 'test@gmail.com',
+    fullName: 'Nick Navarro',
+    username: 'Test_Monkey',
+    email: 'test@gmail.com',
   }
 }
 
@@ -33,7 +33,7 @@ describe('Home', () => {
   })
 
   it('describe getInitialProps', async () => {
-    const props = await getServerSideProps();
-    expect(props).toMatchObject({ data: responseUser.user });
+    const props = await getServerSideProps()
+    expect(props).toMatchObject({ data: responseUser.user })
   })
 })
