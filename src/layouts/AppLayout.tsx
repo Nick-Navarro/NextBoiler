@@ -1,7 +1,5 @@
 import React from 'react'
 import { RouteHandler } from '@/middleware/RouteHandler'
-
-// Local files
 import { Header } from '@/components/global/Header'
 
 export const AppLayout: React.FC<{ authority: number; layoutClass?: string }> = (props) => {

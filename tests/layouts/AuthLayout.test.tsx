@@ -1,7 +1,5 @@
-// import { RouteHandler } from '@/middleware/RouteHandler'
 import { render, screen } from '@testing-library/react'
-import { Router } from 'next/router'
-import AuthLayout from '../../src/layouts/AuthLayout'
+import AuthLayout from '@/layouts/AuthLayout'
 
 jest.mock('next/router', () => ({
   useRouter: () => ({

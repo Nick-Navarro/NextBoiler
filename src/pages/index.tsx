@@ -1,50 +1,45 @@
 import React from 'react'
 import moment from 'moment'
-
 import { NextPage } from 'next'
 import Head from 'next/head'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'react-i18next'
 import { AppLayout } from '@/layouts/AppLayout'
 import { HomeInitials } from '@/@types/initializations'
-
 import { getHomePageInitialValues } from '@/services/initializations'
-
 import { LOGGEDIN } from '@/../config/constants'
 import styles from './home/home.module.scss'
 
-const Home: NextPage<HomeInitials> = (props): JSX.Element => {
-  const {
-    homeData: { user },
-  } = props
-
+const Home: NextPage<HomeInitials> = (): JSX.Element => {
+  const { t } = useTranslation('common')
   return (
     <div className={styles.container}>
       <Head>
-        <title>Patient Portal</title>
+        <title>{t('meta.title')}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <AppLayout authority={LOGGEDIN}>
         <main className={styles.main}>
-          <h1 className={styles.title}>Starting Patient Portal</h1>
+          <h1 className={styles.title}>{t('heading.patientPortal')}</h1>
 
           <div className={styles.grid}>
-            <div className={styles.card}>
-              <h3>Welcome, {user.fullName}</h3>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quia necessitatibus fugiat ratione
-                odio nulla id nam.
-              </p>
-            </div>
+            <a href="https://vitamedmd.net/" className={styles.card}>
+              <h3>{t('heading.documentation')}</h3>
+              <p>{t('paragraph.text')}</p>
+            </a>
           </div>
         </main>
       </AppLayout>
-
       <footer className={styles.footer}>@{moment().format('YYYY')} TherapeuticsMS, Inc. All rights reserved.</footer>
     </div>
   )
 }
 
-export const getServerSideProps = async () => getHomePageInitialValues()
+export const getServerSideProps = async ({ locale }) => ({
+  props: {
+    ...getHomePageInitialValues(),
+    ...(await serverSideTranslations(locale, ['common'])),
+  },
+})
 
 export default Home

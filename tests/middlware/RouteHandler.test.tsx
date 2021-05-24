@@ -22,7 +22,7 @@ describe('RouteHandler', () => {
 
   it('children when user is not authorized', () => {
     const authority = 1
-    const { debug } = render(
+    render(
       <RouteHandler authority={authority}>
         <div>Rendering Children</div>
       </RouteHandler>

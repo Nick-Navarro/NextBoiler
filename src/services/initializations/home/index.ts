@@ -11,6 +11,6 @@ export const getHomePageInitialValues = async (): Promise<HomeInitials> => {
       initData = res.data
     })
     // eslint-disable-next-line no-console
-    .catch((_error) => console.debug(_error))
+    .catch((_error) => _error)
   return { homeData: initData }
 }

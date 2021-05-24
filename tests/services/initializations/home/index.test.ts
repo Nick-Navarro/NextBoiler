@@ -18,13 +18,13 @@ describe('getHomePageInitialValues | success', () => {
       data: responseUser.user
     }))
     const res = await getHomePageInitialValues();
-    expect(res).toMatchObject({ user: responseUser.user })
+    expect(res).toMatchObject({ homeData: responseUser.user })
   })
 
   it('should return an error', async () => {
     const module = require('@/services/api/HomeInit')
     module.fetchHomepageData = jest.fn().mockImplementationOnce(async () => Promise.reject(new Error('error')))
     const res = await getHomePageInitialValues();
-    expect(res).toMatchObject({ user: undefined })
+    expect(res).toMatchObject({ homeData: undefined })
   })
 })
