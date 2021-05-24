@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 type AuthLayoutProps = {
-  authUser?: number
+  authUser?: number | boolean
 }
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({ authUser, children }) => {
