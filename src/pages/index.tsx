@@ -13,9 +13,8 @@ import { LOGGEDIN } from '@/../config/constants'
 import styles from './home/home.module.scss'
 
 const Home: NextPage<HomeInitials> = (props): JSX.Element => {
-  const {
-    homeData: { user },
-  } = props
+  const { homeData } = props
+  const { user = {} } = homeData || {}
 
   return (
     <div className={styles.container}>
@@ -30,7 +29,7 @@ const Home: NextPage<HomeInitials> = (props): JSX.Element => {
 
           <div className={styles.grid}>
             <div className={styles.card}>
-              <h3>Welcome, {user.fullName}</h3>
+              <h3>Welcome, {user && user.fullName}</h3>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quia necessitatibus fugiat ratione
                 odio nulla id nam.
@@ -45,6 +44,9 @@ const Home: NextPage<HomeInitials> = (props): JSX.Element => {
   )
 }
 
-export const getServerSideProps = async () => getHomePageInitialValues()
+export const getServerSideProps = async () => {
+  const data = await getHomePageInitialValues()
+  return { props: data }
+}
 
 export default Home

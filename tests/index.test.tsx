@@ -21,7 +21,7 @@ const responseUser: HomepageInitResponseData = {
 
 jest.mock('@/services/initializations', () => ({
   getHomePageInitialValues: jest.fn().mockImplementationOnce(async () => Promise.resolve({
-    data: responseUser.user
+    homeData: responseUser.user
   }))
 }))
 
@@ -33,7 +33,7 @@ describe('Home', () => {
   })
 
   it('describe getInitialProps', async () => {
-    const props = await getServerSideProps()
-    expect(props).toMatchObject({ data: responseUser.user })
+    const { props } = await getServerSideProps()
+    expect(props).toMatchObject({ homeData: responseUser.user })
   })
 })
