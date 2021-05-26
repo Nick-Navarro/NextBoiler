@@ -1,4 +1,4 @@
-module.exports = { // distDir: 'out',
+module.exports = {
   future: {
     webpack5: true
   }
