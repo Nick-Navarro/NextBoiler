@@ -1,5 +1,4 @@
 import App, { AppProps } from 'next/app'
-import { appWithTranslation } from 'next-i18next'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
@@ -18,4 +17,4 @@ AppBase.getInitialProps = async (appContext) => {
   return { ...appProps }
 }
 
-export default appWithTranslation(AppBase)
+export default AppBase

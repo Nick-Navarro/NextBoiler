@@ -10,14 +10,6 @@ jest.mock('next/router', () => ({
   }))
 }))
 
-jest.mock('react-i18next', () => {
-  const messages = require('../public/locales/en/common.json')
-  return {
-  useTranslation: () => ({
-    t: (key: string): string => messages[key]})
-  }
-})
-
 const responseUser: HomepageInitResponseData = {
   dataResponseType: 'homepage_init',
   user: {
@@ -39,15 +31,5 @@ describe('Home', () => {
     render(<Home homeData={responseUser} />)
     const h1 = screen.getByText('Starting Patient Portal')
     expect(h1).toBeDefined()
-  })
-
-  it('describes getServerSideProps', async () => {
-    const props = await getServerSideProps({ locale: 'en' });
-    expect(props).toMatchObject({
-      props: {
-        // data: responseUser.user,
-        _nextI18Next: translationContext
-      }
-    });
   })
 })
