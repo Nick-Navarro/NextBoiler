@@ -6,7 +6,6 @@ import { AppLayout } from '@/layouts/AppLayout'
 import { HomeInitials } from '@/@types/initializations'
 import { getHomePageInitialValues } from '@/services/initializations'
 import { LOGGEDIN } from '@/../config/constants'
-import { useRouter } from 'next/router'
 import styles from './home/home.module.scss'
 import { messages as lang } from '../../public/locales/index'
 
