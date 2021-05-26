@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app'
+import App, { AppProps } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { appWithTranslation } from 'next-i18next'
@@ -18,9 +18,9 @@ const AppBase = ({ Component, pageProps }: AppProps) => <Component {...pageProps
 // perform automatic static optimization, causing every page in your app to
 // be server-side rendered.
 
-// AppBase.getInitialProps = async (appContext) => {
-//   const appProps = await App.getInitialProps(appContext)
-//   return { ...appProps }
-// }
+AppBase.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext)
+  return { ...appProps }
+}
 
 export default appWithTranslation(AppBase)
