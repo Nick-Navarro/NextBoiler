@@ -6,24 +6,24 @@ import { AppLayout } from '@/layouts/AppLayout'
 import { HomeInitials } from '@/@types/initializations'
 import { getHomePageInitialValues } from '@/services/initializations'
 import { LOGGEDIN } from '@/../config/constants'
+import { useRouter } from 'next/router'
 import styles from './home/home.module.scss'
+import { messages as lang } from '../../public/locales/index'
 
-const Home: NextPage<HomeInitials> = (): JSX.Element => (
+const Home: NextPage<HomeInitials> = ({ i18n }): JSX.Element => (
   <div className={styles.container}>
     <Head>
-      <title>Patient Portal</title>
+      <title>{i18n['meta.title']}</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <AppLayout authority={LOGGEDIN}>
       <main className={styles.main}>
-        <h1 className={styles.title}>Starting Patient Portal</h1>
+        <h1 className={styles.title}>{i18n['heading.patientPortal']}</h1>
 
         <div className={styles.grid}>
           <a href="https://vitamedmd.net/" className={styles.card}>
-            {/* <h3>{t('heading.documentation')}</h3>
-              <p>{t('paragraph.text')}</p> */}
-            <h3>Patient Portal translation documentation</h3>
-            <p>Lets Go</p>
+            <h3>{i18n['heading.documentation']}</h3>
+            <p>{i18n['paragraph.text']}</p>
           </a>
         </div>
       </main>
@@ -32,10 +32,15 @@ const Home: NextPage<HomeInitials> = (): JSX.Element => (
   </div>
 )
 
-export const getServerSideProps = async () => ({
-  props: {
-    ...getHomePageInitialValues(),
-  },
-})
+export const getServerSideProps = async ({ locale }) => {
+  console.log({ props: locale, lang })
+
+  return {
+    props: {
+      ...getHomePageInitialValues(),
+      i18n: lang[locale],
+    },
+  }
+}
 
 export default Home
