@@ -22,6 +22,7 @@ const Home: NextPage<HomeInitials> = (): JSX.Element => (
           <a href="https://vitamedmd.net/" className={styles.card}>
             <h3>AWS Example</h3>
             <p>This is an example of the Patient Portal</p>
+            <p>Lets add this basic nonsense here to show a change</p>
           </a>
         </div>
       </main>
