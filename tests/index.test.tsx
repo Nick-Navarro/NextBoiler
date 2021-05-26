@@ -26,10 +26,27 @@ jest.mock('@/services/initializations', () => ({
   }))
 }))
 
+jest.mock('react-i18next', () => {
+  const messages = require('../public/locales/en/common.json')
+  return {
+  useTranslation: () => ({
+    t: (key: string): string => messages[key]})
+  }
+})
+
 describe('Home', () => {
   it('renders without crashing', () => {
     render(<Home homeData={responseUser} />)
     const h1 = screen.getByText('Starting Patient Portal')
     expect(h1).toBeDefined()
+  })
+
+  it('describes getServerSideProps', async () => {
+    const props = await getServerSideProps({ locale: 'en' });
+    expect(props).toMatchObject({
+      props: {
+        _nextI18Next: translationContext
+      }
+    })
   })
 })

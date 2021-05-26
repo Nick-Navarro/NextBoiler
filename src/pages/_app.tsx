@@ -1,6 +1,7 @@
-import App, { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import { appWithTranslation } from 'next-i18next'
 
 import '@/styles/generals/global.scss'
 
@@ -12,9 +13,14 @@ Router.events.on('routeChangeError', () => NProgress.done())
 
 const AppBase = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />
 
-AppBase.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext)
-  return { ...appProps }
-}
+// Only uncomment this method if you have blocking data requirements for
+// every single page in your application. This disables the ability to
+// perform automatic static optimization, causing every page in your app to
+// be server-side rendered.
 
-export default AppBase
+// AppBase.getInitialProps = async (appContext) => {
+//   const appProps = await App.getInitialProps(appContext)
+//   return { ...appProps }
+// }
+
+export default appWithTranslation(AppBase)
