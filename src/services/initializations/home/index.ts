@@ -12,5 +12,5 @@ export const getHomePageInitialValues = async (): Promise<HomeInitials> => {
     })
     // eslint-disable-next-line no-console
     .catch((_error) => _error)
-  return { homeData: initData }
+  return { homeData: initData, i18n: {} }
 }
