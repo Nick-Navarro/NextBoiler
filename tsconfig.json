@@ -7,7 +7,6 @@
       "es2017",
       "esnext"
     ],
-    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
