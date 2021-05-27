@@ -1,5 +1,4 @@
 export const common = {
-  "greeting": "¡Hola!",
   "meta.title": "Portal de Paciente",
   "heading.patientPortal": "Empezando la Portal de Paciente",
   "heading.documentation": "¡Documentación!",
