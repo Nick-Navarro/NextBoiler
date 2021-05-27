@@ -1,7 +1,13 @@
-import * as en from './en/common.json'
-import * as es from './es/common.json'
+import en from './en'
+import es from './es'
+import Translations from '@/@types/translations/index'
 
-export const localeCopy = {
+interface LocaleInt {
+  en: Translations
+  es: Translations
+}
+
+export const LOCALE_COPY: LocaleInt = {
   en,
-  es
+  es,
 }

@@ -3,7 +3,7 @@ import { IntlProvider } from 'react-intl'
 import Router, { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import '@/styles/generals/global.scss'
-import { localeCopy } from 'public/locales'
+import { LOCALE_COPY } from 'public/locales'
 
 // Page Loader Config
 NProgress.configure({ showSpinner: false })
@@ -13,8 +13,7 @@ Router.events.on('routeChangeError', () => NProgress.done())
 
 const AppBase = ({ Component, pageProps }: AppProps) => {
   const { locale, defaultLocale } = useRouter()
-  console.warn({ locale, defaultLocale })
-  const messages = localeCopy[locale]
+  const messages = LOCALE_COPY[locale]
   return (
     <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages}>
       <Component {...pageProps} />

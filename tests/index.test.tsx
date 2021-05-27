@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import Home, { getServerSideProps } from '@/pages/index'
 import { HomepageInitResponseData } from '@/@types/api'
-import { translationContext } from '../constants/test/translation'
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(() => ({
@@ -26,11 +25,11 @@ jest.mock('@/services/initializations', () => ({
   }))
 }))
 
-jest.mock('react-i18next', () => {
-  const messages = require('../public/locales/en/common.json')
+jest.mock('react-intl', () => {
+  const { default: messages } = require('../public/locales/en/index')
   return {
-  useTranslation: () => ({
-    t: (key: string): string => messages[key]})
+  useIntl: () => ({
+    formatMessage: ({ id }: { id: string }): string => messages[id]})
   }
 })
 
@@ -42,11 +41,9 @@ describe('Home', () => {
   })
 
   it('describes getServerSideProps', async () => {
-    const props = await getServerSideProps({ locale: 'en' });
+    const props = await getServerSideProps();
     expect(props).toMatchObject({
-      props: {
-        _nextI18Next: translationContext
-      }
+      props: {}
     })
   })
 })
