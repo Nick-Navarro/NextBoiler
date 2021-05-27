@@ -26,9 +26,9 @@ const AppBase = ({ Component, pageProps }: AppProps) => {
 // perform automatic static optimization, causing every page in your app to
 // be server-side rendered.
 
-// AppBase.getInitialProps = async (appContext) => {
-//   const appProps = await App.getInitialProps(appContext)
-//   return { ...appProps }
-// }
+AppBase.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext)
+  return { ...appProps }
+}
 
 export default AppBase
