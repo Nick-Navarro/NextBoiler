@@ -7,13 +7,19 @@ import { HomeInitials } from '@/@types/initializations'
 import { getHomePageInitialValues } from '@/services/initializations'
 import { LOGGEDIN } from '@/../config/constants'
 import { useIntl } from 'react-intl'
-import { withSSRContext, graphqlOperation } from 'aws-amplify'
+import { API, withSSRContext, graphqlOperation } from 'aws-amplify'
+import Patient from '@/components/Patient'
 import * as queries from '../graphql/queries'
 import styles from './home/home.module.scss'
 
 const Home: NextPage<HomeInitials> = ({ patientProfile }): JSX.Element => {
-  console.log(patientProfile)
   const { formatMessage: f } = useIntl()
+  const [fetchedUser, setFetchedUser] = React.useState(null)
+  const fetchOtherUser = async () => {
+    const fetchedPatient: any = await API.graphql(graphqlOperation(queries.getPatientProfile, { id: 63360 }))
+    setFetchedUser(fetchedPatient.data.getPatientProfile)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -30,21 +36,16 @@ const Home: NextPage<HomeInitials> = ({ patientProfile }): JSX.Element => {
             </a>
           </div>
           <div className={styles.info}>
-            <p>
-              Patient Id: <strong>{patientProfile.patientId}</strong>{' '}
-            </p>
-            <p>
-              Patient Email: <strong>{patientProfile.email}</strong>{' '}
-            </p>
-            <p>
-              Patient First: <strong>{patientProfile.firstName}</strong>{' '}
-            </p>
-            <p>
-              Patient Last: <strong>{patientProfile.lastName}</strong>{' '}
-            </p>
-            <p>
-              Patient DOB: <strong>{patientProfile.dob}</strong>{' '}
-            </p>
+            <h2>Server Side Rendered API Call</h2>
+            <Patient patient={patientProfile} />
+          </div>
+
+          <div className={styles.info}>
+            <h2>Client Side API Call</h2>
+            <button type="button" onClick={fetchOtherUser}>
+              Query from Client
+            </button>
+            <span>{fetchedUser ? <Patient patient={fetchedUser} /> : <p>User has not been fetched</p>}</span>
           </div>
         </main>
       </AppLayout>
@@ -53,9 +54,9 @@ const Home: NextPage<HomeInitials> = ({ patientProfile }): JSX.Element => {
   )
 }
 
-export const getServerSideProps = async ({ res, req }) => {
-  const { API } = withSSRContext({ req })
-  const { data } = await API.graphql(graphqlOperation(queries.getPatientProfile, { id: 63359 }))
+export const getServerSideProps = async ({ req }) => {
+  const { API: SSR_API } = withSSRContext({ req })
+  const { data } = await SSR_API.graphql(graphqlOperation(queries.getPatientProfile, { id: 63359 }))
   return {
     props: {
       patientProfile: data.getPatientProfile,

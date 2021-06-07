@@ -12,6 +12,14 @@ export const getPatientProfile = /* GraphQL */ `
       lastName
       gender
       dob
+      primaryPhone {
+        number
+      }
+      shippingAddress {
+        city
+        state
+        zip
+      }
     }
   }
 `
