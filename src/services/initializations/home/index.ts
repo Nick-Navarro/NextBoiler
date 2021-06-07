@@ -5,12 +5,15 @@ import { HomeInitials } from '@/@types/initializations'
 
 export const getHomePageInitialValues = async (): Promise<HomeInitials> => {
   let initData: HomepageInitResponseData
-
+  let initPatientProfile: HomeInitials['patientProfile']
   await fetchHomepageData()
     .then((res) => {
       initData = res.data
     })
     // eslint-disable-next-line no-console
     .catch((_error) => _error)
-  return { homeData: initData }
+  return {
+    homeData: initData,
+    patientProfile: initPatientProfile,
+  }
 }

@@ -1,11 +1,24 @@
 import App, { AppProps } from 'next/app'
 import { IntlProvider } from 'react-intl'
+import Amplify from 'aws-amplify'
 import Router, { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import '@/styles/generals/global.scss'
 import { LOCALE_COPY } from 'public/locales'
+import awsExports from '../aws-exports'
 
+// import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+// // export const client = new AWSAppSyncClient({
+// //   disableOffline: true,
+// //   url: awsExports.aws_appsync_graphqlEndpoint,
+// //   region: awsExports.aws_appsync_region,
+// //   auth: {
+// //     type: AUTH_TYPE.API_KEY, // or type: awsconfig.aws_appsync_authenticationType,
+// //     apiKey: awsExports.aws_appsync_apiKey,
+// //   }
+// // });
 // Page Loader Config
+Amplify.configure({ ...awsExports, ssr: true })
 NProgress.configure({ showSpinner: false })
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

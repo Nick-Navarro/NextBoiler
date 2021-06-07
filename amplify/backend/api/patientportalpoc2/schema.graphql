@@ -1,0 +1,13 @@
+type PatientProfile {
+	id: String
+	patientId: Int!
+	email: String!
+	firstName: String!
+	lastName: String!
+	gender: String
+	dob: String
+}
+
+type Query {
+	getPatientProfile(id: Int): PatientProfile
+}
